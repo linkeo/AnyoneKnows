@@ -1,0 +1,39 @@
+user
+	uid     	int 11 ai
+	username	varchar 25
+	password	varchar 25
+	name    	varchar 64
+	email   	varchar 128
+	website 	varchar 128
+	location	varchar 128
+	gender  	int 1
+	avator  	longblob
+	time    	datetime
+question
+	qid     	int 11 ai
+	uid     	int 11
+	title   	varchar 128
+	content 	text
+	time    	datetime
+answer
+	aid     	int 11 ai
+	uid     	int 11
+	qid     	int 11
+	content 	text
+	time    	datetime
+improvement
+	iid     	int 11 ai
+	uid     	int 11
+	aid     	int 11
+	content 	text
+	time    	datetime
+star/upvote_question/downvote_question
+	uid     	int 11
+	qid     	int 11
+upvote_answer/downvote_answer
+	uid     	int 11
+	aid     	int 11
+visit
+	vid     	int 22
+	qid     	int 11
+	time    	datetime

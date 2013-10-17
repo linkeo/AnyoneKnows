@@ -1,0 +1,187 @@
+
+
+body{
+	font-size: 100%;
+	font-family: 'Trebuchet MS',微软雅黑;
+}
+h1{
+	font-weight: normal;
+}
+img{
+	max-height: 100%;
+}
+nav{
+	background-color: rgba(0, 204, 255, 0.2);
+	z-index: 1999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-position: 0 -361px;
+	background-repeat: repeat-x;
+	height: 30px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.8);
+	display: block;
+}
+#navibar{
+	display: block;
+	width: 980px;
+	height: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 0;
+	height: 100%;
+}
+nav div div{
+	float: left;
+	display: block;
+	width: 320px;
+	margin-left: 0;
+	margin-right: 10px;
+	height: 100%;
+}
+nav div div:last-child{
+	float: right;
+	margin-right: 0;
+}
+#usernav{
+	display: none;
+}
+#userinfo{
+	width: 320px;
+	height: 24px;
+	float: left;
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 0;
+	margin-right: 0;
+	border-radius: 5px;
+}
+#userinfo div{
+	float: left;
+	height: 100%;
+	margin-right: 10px;
+}
+#loggeduser{
+	line-height: 24px;
+}
+#avator img{
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+#username,#password{
+	width: 108px;
+	height: 22px;
+}
+#loginsubmit{
+	width: 80px;
+	height: 26px;
+}
+#logo img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#search{
+	height: 100%;
+}
+.inline-form input{
+	float: left;
+	border-style: solid;
+	border-color: gray;
+	border-width: 1px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: -1px;
+	margin-right: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.inline-form input:first-child{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-left: 0;
+}
+.inline-form input:last-child{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#keyword{
+	width: 228px;
+	height: 22px;
+}
+.submit{
+	background-color:#3bb3e0;
+	color:#fff;
+	border: solid 1px #186f8f;
+	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(44,160,202)),
+	color-stop(1, rgb(62,184,229))
+	);
+}
+.submit::before{
+	background-color:#ccd0d5;
+	content:"";
+	display:block;
+	position:absolute;
+	width:100%;
+	height:100%;
+	padding:8px;
+	left:-8px;
+	top:-8px;
+	z-index:-1;
+}
+.submit:active{
+	top:1px;
+	background-image: linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(62,184,229)),
+	color-stop(1, rgb(44,160,202))
+	);
+}
+#searchsubmit{
+	width: 80px;
+	height: 26px;
+}
+.container{
+	width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.site{
+	margin-top: 30px;
+}
+.clearfix{
+	clear: both;
+}
+.pagehead {
+	position: relative;
+	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eee;
+}
+
+#pagehead-button-group{
+	float: right;
+}

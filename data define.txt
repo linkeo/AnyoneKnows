@@ -1,0 +1,37 @@
+post{
+	title,
+	vote_up,
+	vote_down,
+	view_count,
+	star_count,
+	tag :string as "[java][Ask]"
+	question :discuss
+	accept_answer :discuss
+	accept_time
+	answers[
+		answer{
+			discuss
+			improvements[discuss]
+			vote_up,
+			vote_down,
+		}
+	]
+}
+
+discuss{
+	id,
+	talker,
+	content,
+	time
+}
+
+user{
+	username,
+	password,
+	birthday,
+	email,
+	gender,
+	website,
+	location,
+	avator,
+}
