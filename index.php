@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
+	<?php require('model.php'); common_head(); ?>
 <title>AnyoneKnows</title>
 <link rel="stylesheet" type="text/css" href="stylesheet/gh-buttons.css" >
 <link rel="stylesheet" type="text/css" href="stylesheet/homepage.css" >
