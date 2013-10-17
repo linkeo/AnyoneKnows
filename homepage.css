@@ -19,8 +19,8 @@ nav{
 	display: block;
 }
 #navibar{
-	width: 100%;
-	max-width: 980px;
+	display: block;
+	width: 980px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	margin-right: auto;
@@ -28,31 +28,21 @@ nav{
 	padding: 0;
 	height: 100%;
 }
+nav ul li{
+	display: inline-block;
+	width: 320px;
+	margin-left: 0;
+	margin-right: 10px;
+	height: 100%;
+}
+nav ul li:last-child{
+	padding-right: 0;
+}
 #userinfo{
-	float: left;
-	display: block;
 	background-color: rgba(127,127,127,0.2);
-	height: 30px;
-	width: auto;
 }
-#avator{
-	float: left;
-	height: 100%;
-	margin-left: 5px;
-	margin-right: 5px;
-}
-#username{
-	float: left;
-	height: 100%;
-	margin-left: 5px;
-	margin-right: 5px;
-}
-#searchbar{
-	float: right;
-	margin-left: 5px;
-	padding-left: 5px;
-	margin-right: 5px;
-	padding-right: 5px;
+#userinfo div{
+	display: inline-block;
 	height: 100%;
 }
 #search{
@@ -70,12 +60,6 @@ nav{
 	padding-left: 5px;
 	padding-right: 5px;
 	height: 22px;
-}
-.navi-text{
-	display: inline-block;
-	zoom: 1;
-	vertical-align: middle;
-	height: 100%;
 }
 #searchsubmit{
 	float: left;
