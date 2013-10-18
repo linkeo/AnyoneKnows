@@ -32,10 +32,10 @@
 			<input type="text" id="search" placeholder="搜索"/>
 		</div>
 	</nav>
-	<div class='site clearfix'>
+	<div class='site'>
 		<div class='pagehead container'>
-			<h1>Anyone<b>Knows</b></h1>
-			<h3>有谁<b>知道</b></h3>
+			<h1 class='sitename'>Anyone<b>Knows</b></h1>
+			<h3 class='sitename'>有谁<b>知道</b></h3>
 		</div>
 		<div class='container'>
 			<div class='left-container'>
@@ -57,12 +57,16 @@
 						</div>
 					</div>
 						<!-- question display block -->
+					<?php for($qiter=0;$qiter<10;$qiter++){?>
 					<div class='item'>
 						<div class='qcontent'>
 							<div class='quser'>
 								<img src="image/avator.jpg" class='qavator'>
 							</div>
-							<div class='qtitle'>How to use Ajax via jQuery?</div>
+							<div class='qtitle'><p>怎么使用jQuery来实现Ajax?</p>
+								<a class='tag' href='#'>jQuery</a>
+								<a class='tag' href='#'>Ajax</a>
+							</div>
 						</div>
 						<div class='qstat'>
 							<div class='upvotestat'>15</div>
@@ -70,6 +74,7 @@
 							<div class='starstat'>15</div>
 						</div>
 					</div>
+					<?php }?>
 						<!-- question display block -->
 
 					<div id='qnav'class='nav button-group'>
@@ -94,11 +99,16 @@
 				<div class='box'>
 						<!-- hot tag display block -->
 					<h3 class='title'>热门标签</h3>
-					<span class='tag'>Java</span>
-					<span class='tag'>JavaScript</span>
-					<span class='tag'>PHP</span>
-					<span class='tag'>Ajax</span>
-					<span class='tag'>jQuery</span>
+					<a class='tag' href='#'>Java</a>
+					<a class='tag' href='#'>JavaScript</a>
+					<a class='tag' href='#'>PHP</a>
+					<a class='tag' href='#'>Ajax</a>
+					<a class='tag' href='#'>jQuery</a>
+					<a class='tag' href='#'>JSON</a>
+					<a class='tag' href='#'>正则表达式</a>
+					<a class='tag' href='#'>C#</a>
+					<a class='tag' href='#'>C++</a>
+					<a class='tag' href='#'>Swing</a>
 						<!-- hot tag display block -->
 				</div>
 			</aside>

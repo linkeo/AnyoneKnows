@@ -61,7 +61,7 @@ $(document).ready(function(){
 				}
 			});
 			email.removeClass("error");
-			emailInfo.text("√");
+			emailInfo.text("OK");
 			emailInfo.removeClass("error");
 			return true;
 		}
@@ -97,7 +97,7 @@ $(document).ready(function(){
 				}
 			});
 			username.removeClass("error");
-			usernameInfo.text("√");
+			usernameInfo.text("OK");
 			usernameInfo.removeClass("error");
 			return true;
 		}
@@ -119,7 +119,7 @@ $(document).ready(function(){
 		//if it's valid
 		else{
 			name.removeClass("error");
-			nameInfo.text("√");
+			nameInfo.text("OK");
 			nameInfo.removeClass("error");
 			return true;
 		}
@@ -144,7 +144,7 @@ $(document).ready(function(){
 		//it's valid
 		else{			
 			pass1.removeClass("error");
-			pass1Info.text("√");
+			pass1Info.text("OK");
 			pass1Info.removeClass("error");
 			validatePass2();
 			return true;
@@ -163,7 +163,7 @@ $(document).ready(function(){
 		//are valid
 		else{
 			pass2.removeClass("error");
-			pass2Info.text("√");
+			pass2Info.text("OK");
 			pass2Info.removeClass("error");
 			return true;
 		}

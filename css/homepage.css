@@ -4,8 +4,12 @@ body{
 	font-size: 100%;
 	font-family: 'Trebuchet MS','微软雅黑',arial;
 }
-.pagehead h1,.pagehead h2,.pagehead h3,.pagehead h4,.pagehead h5,.pagehead h6{
+.sitename{
 	font-weight: normal;
+    text-shadow: 0 0 4px #18f;
+}
+.sitename b{
+    text-shadow: 0 0 4px #f11;
 }
 img{
 	max-height: 100%;
@@ -87,6 +91,7 @@ nav *{
 }
 .site{
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 .clearfix{
     clear: both;
@@ -99,11 +104,13 @@ nav *{
     border-bottom: 1px solid #eee;
 }
 .left-container{
-	float: left;
+	display: inline-block;
 	width: 640px;
 }
 aside{
-	float: right;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
 	width: 320px;
 }
 .box{
@@ -122,6 +129,15 @@ aside{
 .item,.title{
     position: relative;
     border-bottom: 1px solid #ddd;
+}
+.item:hover,
+.item:focus
+.item:active,
+.item.active{
+    transition:background-color 1s, box-shadow 1s, border-radius 1s;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 0 0 0.2em #777;
+    border-radius: 0.5em;
 }
 .title{ padding-bottom: 1em; }
 .listhead{
@@ -150,8 +166,10 @@ aside{
 	display: inline-block;
 	vertical-align: top;
 	width: 85%;
-	font-size: 1.2em;
-	font-weight: bold;
+}
+.qtitle p{
+    margin: auto;
+    font-size: 1.2em;
 }
 .quser{
 	display: inline-block;
@@ -164,6 +182,8 @@ aside{
 	width: 2em;
 	height: 2em;
 	border-radius: 1em;
+    margin: 0.2em;
+    box-shadow: 0 0 0.2em #777;
 }
 .qstat{
 	display: inline-block;
@@ -186,12 +206,19 @@ aside{
 	color: #b33630;
 }
 .tag{
+    position: relative;
+    overflow: visible;
+    padding: 0 0.5em;
+    margin: 0.2em 0;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
 	display: inline-block;
     border-color: #72b330;
     border-bottom-color: #65a02a;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    margin-bottom: 0.5em;
+    font-size: 0.5em;
     text-decoration: none;
     text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
     color: #fff;
@@ -201,4 +228,34 @@ aside{
     background-image: -o-linear-gradient(#9bdc59, #72b330);
     background-image: linear-gradient(#9bdc59, #72b330);
     border-radius: 0.5em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+.tag:hover,
+.tag:focus,
+.tag:active,
+.tag.active {
+    border-color: #82c340;
+    border-bottom-color: #75b03a;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #9dee4c;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#abec69), to(#82c340));
+    background-image: -moz-linear-gradient(#abec69, #82c340);
+    background-image: -o-linear-gradient(#abec69, #82c340);
+    background-image: linear-gradient(#abec69, #82c340);
+}
+
+.tag:active,
+.tag.active {
+    border-color: #abec69;
+    border-bottom-color: #82c340;
+    background-color: #8dde3c;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#82c340), to(#abec69));
+    background-image: -moz-linear-gradient(#82c340, #abec69);
+    background-image: -ms-linear-gradient(#82c340, #abec69);
+    background-image: -o-linear-gradient(#82c340, #abec69);
+    background-image: linear-gradient(#82c340, #abec69);
 }
