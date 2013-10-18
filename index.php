@@ -3,44 +3,105 @@
 <head>
 	<?php require('model.php'); common_head(); ?>
 <title>AnyoneKnows</title>
-<link rel="stylesheet" type="text/css" href="stylesheet/gh-buttons.css" >
-<link rel="stylesheet" type="text/css" href="stylesheet/homepage.css" >
+<link rel="stylesheet" type="text/css" href="css/gh-buttons.css" >
+<link rel="stylesheet" type="text/css" href="css/homepage.css" >
 
 </head>
 <body>
 	<nav>
 		<div id="navibar" class='container clearfix'>
-			<div id='loginnav'>
-				<form class='inline-form button-group' id='login' action='login.php' >
-					<input type='text' name='username' id='username' placeholder='username'>
-					<input type='password' name='password' id='password' placeholder='password'>
-					<input type='submit' id='loginsubmit' class='button pill' value='Login'>
-				</form>
-			</div>
+			<?php if(isset($_COOKIE['login'])&&$_COOKIE['login']=true){ ?>
 			<div id='usernav'>
 				<div id='userinfo'>
 					<div id="avator"><img src="image/avator.jpg"></div>
 					<div id="loggeduser" class="username">湮灭星空</div>
 				</div>
 			</div>
-			<div id="searchnav">
-				<form class='inline-form button-group' id="search" action="search.php">
-					<input type="text" name="keyword" id="keyword" placeholder="keyword"/>
-					<input type="submit" id="searchsubmit" class='button pill' value="Search">
-				</form>
+			<?php }else{ ?>
+			<div class='button-group'>
+				<a class='button primary'>登陆</a>
+				<a class='button'>注册</a>
 			</div>
+			<?php } ?>
+			<div id='navigroup' class='button-group'>
+				<a class='button' href='#'>问题</a>
+				<a class='button' href='#'>标签</a>
+				<a class='button' href='#'>用户</a>
+				<a class='button primary' href='#'>提问</a>
+			</div>
+			<input type="text" id="search" placeholder="搜索"/>
 		</div>
 	</nav>
 	<div class='site clearfix'>
 		<div class='pagehead container'>
 			<h1>Anyone<b>Knows</b></h1>
-			<div id='pagehead-button-group'class='button-group'>
-				<a class='button' href='#'>Questions</a>
-				<a class='button' href='#'>Tags</a>
-				<a class='button' href='#'>Users</a>
-				<a class='button primary' href='#'>Ask a question</a>
-			</div>
+			<h3>有谁<b>知道</b></h3>
 		</div>
-		<div class='container'></div>
+		<div class='container'>
+			<div class='left-container'>
+				<div class='box'>
+					<h2 class='title'>精选问题
+					</h2>
+					
+					<div class='listhead'>
+						<div class='lhcontent'>
+							<div class='quser'>
+								用户
+							</div>
+							<div class='qtitle'>标题</div>
+						</div>
+						<div class='qstat'>
+							<div class='upvotestat'>赞</div>
+							<div class='downvotestat'>贬</div>
+							<div class='starstat'>收藏</div>
+						</div>
+					</div>
+						<!-- question display block -->
+					<div class='item'>
+						<div class='qcontent'>
+							<div class='quser'>
+								<img src="image/avator.jpg" class='qavator'>
+							</div>
+							<div class='qtitle'>How to use Ajax via jQuery?</div>
+						</div>
+						<div class='qstat'>
+							<div class='upvotestat'>15</div>
+							<div class='downvotestat'>15</div>
+							<div class='starstat'>15</div>
+						</div>
+					</div>
+						<!-- question display block -->
+
+					<div id='qnav'class='nav button-group'>
+						<a class='button pill icon arrowleft' href='#'>上一页</a>
+						<!-- Page display block -->
+						<!-- current page --><a class='button pill primary' href='#'>1</a>
+						<a class='button pill' href='#'>2</a>
+						<a class='button pill' href='#'>3</a>
+						<a class='button pill' href='#'>4</a>
+						<a class='button pill' href='#'>5</a>
+						<a class='button pill' href='#'>6</a>
+						<a class='button pill' href='#'>7</a>
+						<a class='button pill' href='#'>8</a>
+						<a class='button pill' href='#'>9</a>
+						<a class='button pill' href='#'>10</a>
+						<!-- Page display block -->
+						<a class='button pill icon arrowright' href='#'>下一页</a>
+					</div>
+				</div>
+			</div>
+			<aside>
+				<div class='box'>
+						<!-- hot tag display block -->
+					<h3 class='title'>热门标签</h3>
+					<span class='tag'>Java</span>
+					<span class='tag'>JavaScript</span>
+					<span class='tag'>PHP</span>
+					<span class='tag'>Ajax</span>
+					<span class='tag'>jQuery</span>
+						<!-- hot tag display block -->
+				</div>
+			</aside>
+		</div>
 	</div>
 </body>

@@ -9,7 +9,7 @@
    Base Button
    ========================================================================== */
 
-.button {
+.button{
     position: relative;
     overflow: visible;
     display: inline-block;
@@ -19,7 +19,7 @@
     text-decoration: none;
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
-    font:11px/normal sans-serif;
+    font-size:11px;
     color: #333;
     white-space: nowrap;
     cursor: pointer;
@@ -85,7 +85,7 @@
     width: 12px;
     height: 12px;
     margin: 0 0.75em 0 -0.25em;
-    background: url(image/gh-icons.png) 0 99px no-repeat;
+    background: url(/image/gh-icons.png) 0 99px no-repeat;
 }
 
 .button.arrowup.icon:before { background-position: 0 0; }
@@ -253,6 +253,43 @@
 
 .button.primary {
     font-weight: bold;
+    border-color: #72b330;
+    border-bottom-color: #65a02a;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #8dde3c;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9bdc59), to(#72b330));
+    background-image: -moz-linear-gradient(#9bdc59, #72b330);
+    background-image: -o-linear-gradient(#9bdc59, #72b330);
+    background-image: linear-gradient(#9bdc59, #72b330);
+}
+.button.primary:hover,
+.button.primary:focus,
+.button.primary:active,
+.button.primary.active {
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #3c8dde;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+    background-image: -moz-linear-gradient(#599bdc, #3072b3);
+    background-image: -o-linear-gradient(#599bdc, #3072b3);
+    background-image: linear-gradient(#599bdc, #3072b3);
+}
+
+.button.primary:active,
+.button.primary.active {
+    border-color: #2a65a0;
+    border-bottom-color: #3884cd;
+    background-color: #3072b3;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3072b3), to(#599bdc));
+    background-image: -moz-linear-gradient(#3072b3, #599bdc);
+    background-image: -ms-linear-gradient(#3072b3, #599bdc);
+    background-image: -o-linear-gradient(#3072b3, #599bdc);
+    background-image: linear-gradient(#3072b3, #599bdc);
 }
 
 /* Danger button

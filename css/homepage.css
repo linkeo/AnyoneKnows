@@ -1,0 +1,204 @@
+
+
+body{
+	font-size: 100%;
+	font-family: 'Trebuchet MS','微软雅黑',arial;
+}
+.pagehead h1,.pagehead h2,.pagehead h3,.pagehead h4,.pagehead h5,.pagehead h6{
+	font-weight: normal;
+}
+img{
+	max-height: 100%;
+}
+nav{
+	background-color: rgba(0, 204, 255, 0.2);
+	z-index: 1999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -ms-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -moz-background-clip: padding; /* for Firefox 3.6 */
+    background-clip: padding-box;
+	box-shadow: 0 0 10px rgba(0,0,0,0.8);
+	display: block;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+#navibar{
+	float: none;
+	display: block;
+	width: 980px;
+	height: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 0;
+	height: 100%;
+}
+nav *{
+	float: left;
+	display: block;
+}
+#navibar > *{
+	margin-right: 10px;
+}
+#navigroup{
+	float: right;
+	margin-right: 0px;
+}
+#search{
+	float: right;
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.62em 1em;
+    border: 1px solid #d4d4d4;
+    margin: 0;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #fff;
+    font-size:11px;
+    color: #333;
+    white-space: nowrap;
+    outline: none;
+    background-color: #f4f4f4;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ffffff));
+    background-image: -moz-linear-gradient(#f4f4f4, #ffffff);
+    background-image: -ms-linear-gradient(#f4f4f4, #ffffff);
+    background-image: -o-linear-gradient(#f4f4f4, #ffffff);
+    background-image: linear-gradient(#f4f4f4, #ffffff);
+    -moz-background-clip: padding; /* for Firefox 3.6 */
+    background-clip: padding-box;
+    border-radius: 0.2em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+.container{
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.site{
+    margin-top: 30px;
+}
+.clearfix{
+    clear: both;
+}
+.pagehead {
+    position: relative;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+.left-container{
+	float: left;
+	width: 640px;
+}
+aside{
+	float: right;
+	width: 320px;
+}
+.box{
+	border-radius: 1em;
+    padding: 1em;
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -ms-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -moz-background-clip: padding; /* for Firefox 3.6 */
+    background-clip: padding-box;
+	box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+.item,.title{
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+.title{ padding-bottom: 1em; }
+.listhead{
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    margin-top: -1em;
+}
+.nav{
+	margin-top: 1em;
+}
+.lhcontent,.qcontent{
+	display: inline-block;
+	width: 78%;
+    border-right: 1px solid #ddd;
+}
+.lhcontent div{
+	vertical-align: middle;
+	font-size: 1em;
+	font-weight: normal;
+}
+.qcontent{
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.qtitle{
+	display: inline-block;
+	vertical-align: top;
+	width: 85%;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.quser{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 8%;
+}
+.qavator{
+	width: 2em;
+	height: 2em;
+	border-radius: 1em;
+}
+.qstat{
+	display: inline-block;
+	vertical-align: middle;
+	width: 18%;
+	top: 0;
+}
+.qstat div{
+	display: inline-block;
+	width: 30%;
+	text-align: center;
+}
+.upvotestat{
+	color: #72b330;
+}
+.downvotestat{
+	color: #599bdc;
+}
+.starstat{
+	color: #b33630;
+}
+.tag{
+	display: inline-block;
+    border-color: #72b330;
+    border-bottom-color: #65a02a;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-bottom: 0.5em;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #8dde3c;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9bdc59), to(#72b330));
+    background-image: -moz-linear-gradient(#9bdc59, #72b330);
+    background-image: -o-linear-gradient(#9bdc59, #72b330);
+    background-image: linear-gradient(#9bdc59, #72b330);
+    border-radius: 0.5em;
+}

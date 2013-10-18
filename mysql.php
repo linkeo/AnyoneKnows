@@ -1,16 +1,12 @@
 <?php
 
-	$db_host='localhost';
-	$db_user='root';
-	$db_password='141592653';
-	$db_schema='anyoneknows';
-	$connect;
-
 	function connect(){
-		if(!$connect){
-			$connect=mysql_connect($db_host,$db_user,$db_password);
-			mysql_select_db($db_schema);
-		}
+		$db_host='localhost';
+		$db_user='root';
+		$db_password='141592653';
+		$db_schema='anyoneknows';
+		$connect=mysql_connect($db_host,$db_user,$db_password);
+		mysql_select_db($db_schema);
 	}
 
 	function check_exist_user($username){
