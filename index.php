@@ -78,20 +78,20 @@
 						<!-- question display block -->
 
 					<div id='qnav'class='nav button-group'>
-						<a class='button pill icon arrowleft' href='#'>上一页</a>
+						<a id='prev_page'class='button pill icon arrowleft disable' href='#'>上一页</a>
 						<!-- Page display block -->
-						<!-- current page --><a class='button pill primary' href='#'>1</a>
-						<a class='button pill' href='#'>2</a>
-						<a class='button pill' href='#'>3</a>
-						<a class='button pill' href='#'>4</a>
-						<a class='button pill' href='#'>5</a>
-						<a class='button pill' href='#'>6</a>
-						<a class='button pill' href='#'>7</a>
-						<a class='button pill' href='#'>8</a>
-						<a class='button pill' href='#'>9</a>
-						<a class='button pill' href='#'>10</a>
+						<!-- current page --><a  class='pageid button pill primary' href='#'>1</a>
+						<a class='pageid button pill' href='#'>2</a>
+						<a class='pageid button pill' href='#'>3</a>
+						<a class='pageid button pill' href='#'>4</a>
+						<a class='pageid button pill' href='#'>5</a>
+						<a class='pageid button pill' href='#'>6</a>
+						<a class='pageid button pill' href='#'>7</a>
+						<a class='pageid button pill' href='#'>8</a>
+						<a class='pageid button pill' href='#'>9</a>
+						<a class='pageid button pill' href='#'>10</a>
 						<!-- Page display block -->
-						<a class='button pill icon arrowright' href='#'>下一页</a>
+						<a id='next_page' class='button pill icon arrowright' href='#'>下一页</a>
 					</div>
 				</div>
 			</div>

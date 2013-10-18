@@ -259,3 +259,6 @@ aside{
     background-image: -o-linear-gradient(#82c340, #abec69);
     background-image: linear-gradient(#82c340, #abec69);
 }
+.pageid{
+    width: 20px;
+}
