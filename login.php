@@ -1,57 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8'>
-	<link rel="stylesheet" type="text/css" href="homepage.css">
-	<script language="javascript" src="jquery-2.0.3.js"></script>
 	<?php
+		require('model.php');
 		function login(&$loginuser,$username,$password){
-			$connect=mysql_connect('localhost','root','141592653');
-			mysql_select_db('anyoneknows');
-			$query=mysql_query("select * from users where username='$username' and password='$password'");
-			if($row=mysql_fetch_object($query)){
-				$loginuser=$row->username;
-				setcookie("loginuser",$loginuser,time()+60*5);
+			$result = login_user($username, $password);
+			if($result=='username'){
+				return $result;
+			}else if($result=='password'){
+				return $result;
 			}else{
-				$loginuser=null;
+				$savetime=time()+60*5;
+				setcookie("uid",$result['uid'],$savetime);
+				setcookie("login",true,$savetime);
+				return true;
 			}
 		}
-
+		$login  = false;
 		if(isset($_POST["username"])){
-			login($loginuser,$_POST['username'],$_POST['password']);
+			$login = login($loginuser,$_POST['username'],$_POST['password']);
+			if($login==true)
+				header("Location: index.php");
 		}
-		else if(isset($_COOKIE["loginuser"])){
-			$loginuser=$_COOKIE["loginuser"];
-		}
-		else{
-			$loginuser=null;
-		}
+		common_head();
 	?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		});
-	</script>
+	<style type="text/css">
+		#loginform label{
+			display: block;
+			color: #797979;
+			font-weight: 700;
+			line-height: 1.4em;
+		}
+		#loginform input{
+			width: 250px;
+			padding: 6px;
+			font-family: Arial,  Verdana, Helvetica, sans-serif;
+			font-size: 11px;
+			border: 1px solid #cecece;
+		}
+		#loginform input[type='text'], #loginform input[type='password']{
+			color: #949494;
+		}
+		#loginform input[type='submit']{
+			display: block;
+			margin-top: 1em;
+			width: 264px;
+		}
+		.box{
+			margin-left: auto;
+			margin-right: auto;
+			width: 266px;
+		}
+	</style>
 </head>
 <body>
-	<header>
-		<?php if($loginuser){
-			echo "<div id='user' href='logout()'>$loginuser</div>";
-		}else{
-			echo "<form id='loginform' action='index.php' method='post'><input type='text' placeholder='username' name='username'>";
-			echo "<input type='password' placeholder='password' name='password'><input type='submit' value='login'></form>";
-		} ?>
-	</header>
-	<div class='headerplace'></div>
-	<div class='logo'>
-		<img src='logo.svg'>
-	</div>
-	<div class='searchbar'>
-		<form action="search.php">
-			<input type='text' id='keyword' name='keyword' placeholder='Search your problem'>
-			<input type='submit' value='Search' id='searchsubmit'>
-		</form>
+	<nav> <?php common_nav(); ?> </nav>
+	<div class='site'>
+		<div class='pagehead container'>
+			<h1 class='sitename'>Anyone<b>Knows</b></h1>
+			<h3 class='sitename'>有谁<b>知道</b></h3>
+		</div>
+		<div class='container'>
+		<div class='box'>
+			<h2>用户登录</h2>
+			<?php if($login==true||is_logged($login)){ ?>
+				<p>您已登录成功<br><br> <a href='index.php' class='button'>回到主页</a></p>
+			<?php }else{ ?>
+			<?php if($login=='username'){ ?>
+				<p class='error'><b>登录失败</b>: 该用户名不存在.</p>
+			<?php }else if($login=='password'){ ?>
+				<p class='error'><b>登录失败</b>: 密码不正确.</p>
+			<?php } ?>
+				<form id='loginform' action='login.php' method='post'>
+					<label for='username'>用户名 Username</label>
+					<input type='text' placeholder='username' name='username' class='textinput'>
+					<label for='password'>密码 Password</label>
+					<input type='password' placeholder='password' name='password' class='textinput'>
+					<input type='submit' value='登录 Login' class='button primary'></form>
+			<?php } ?>
+		</div>
+		</div>
 	</div>
 
-	<footer>©2013 Linkeo</footer>
+	<?php common_footer(); ?>
 </body>
 </html>

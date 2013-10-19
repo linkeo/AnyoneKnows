@@ -42,6 +42,7 @@
 .button:focus,
 .button:active,
 .button.active {
+    transition:all 1s, color 0, text-shadow 0;
     border-color: #3072b3;
     border-bottom-color: #2a65a0;
     text-decoration: none;
@@ -56,6 +57,7 @@
 
 .button:active,
 .button.active {
+    transition:all 1s;
     border-color: #2a65a0;
     border-bottom-color: #3884cd;
     background-color: #3072b3;
@@ -252,7 +254,6 @@
    ========================================================================== */
 
 .button.primary {
-    font-weight: bold;
     border-color: #72b330;
     border-bottom-color: #65a02a;
     text-decoration: none;

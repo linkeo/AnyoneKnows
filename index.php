@@ -3,34 +3,11 @@
 <head>
 	<?php require('model.php'); common_head(); ?>
 <title>AnyoneKnows</title>
-<link rel="stylesheet" type="text/css" href="css/gh-buttons.css" >
-<link rel="stylesheet" type="text/css" href="css/homepage.css" >
 
 </head>
 <body>
 	<nav>
-		<div id="navibar" class='container clearfix'>
-			<?php if(isset($_COOKIE['login'])&&$_COOKIE['login']=true){ ?>
-			<div id='usernav'>
-				<div id='userinfo'>
-					<div id="avator"><img src="image/avator.jpg"></div>
-					<div id="loggeduser" class="username">湮灭星空</div>
-				</div>
-			</div>
-			<?php }else{ ?>
-			<div class='button-group'>
-				<a class='button primary'>登陆</a>
-				<a class='button'>注册</a>
-			</div>
-			<?php } ?>
-			<div id='navigroup' class='button-group'>
-				<a class='button' href='#'>问题</a>
-				<a class='button' href='#'>标签</a>
-				<a class='button' href='#'>用户</a>
-				<a class='button primary' href='#'>提问</a>
-			</div>
-			<input type="text" id="search" placeholder="搜索"/>
-		</div>
+		<?php common_nav(); ?>
 	</nav>
 	<div class='site'>
 		<div class='pagehead container'>
@@ -114,4 +91,5 @@
 			</aside>
 		</div>
 	</div>
+	<?php common_footer(); ?>
 </body>

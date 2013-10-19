@@ -13,11 +13,6 @@ a{
 strong{
 	font-weight: 700;
 }
-/******* GENERAL RESET *******/
-h2{
-	border-bottom: 1px dotted #6b9ef1;
-	color: #5f95ef;
-}
 .error{
 	color: #e46c6e;
 }
@@ -55,6 +50,7 @@ h2{
 	color: #949494;
 }
 #customForm input[type='submit']{
+	display: block;
 	width: 264px;
 }
 #customForm input[name='gender']{

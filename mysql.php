@@ -6,6 +6,7 @@
 		$db_password='141592653';
 		$db_schema='anyoneknows';
 		$connect=mysql_connect($db_host,$db_user,$db_password);
+		mysql_query("set names utf8");
 		mysql_select_db($db_schema);
 	}
 
@@ -55,10 +56,10 @@
 		if(!$exists)
 			return 'username';
 		connect();
-		$query="select username, password from user where username = '$username' and password = '$password'";
+		$query="select uid from user where username = '$username' and password = '$password'";
 		$result=mysql_query($query);
 		$user=mysql_fetch_assoc($result);
-		mysql_free_result($query);
+		mysql_free_result($result);
 		if($user)
 			return $user;
 		else
@@ -70,7 +71,7 @@
 		$query="select * from user where uid=$uid";
 		$result=mysql_query($query);
 		$user=mysql_fetch_assoc($result);
-		mysql_free_result($query);
+		mysql_free_result($result);
 		if($user)
 			return $user;
 		else
@@ -82,7 +83,7 @@
 		$query="select * from user where username='$username'";
 		$result=mysql_query($query);
 		$user=mysql_fetch_assoc($result);
-		mysql_free_result($query);
+		mysql_free_result($result);
 		if($user)
 			return $user;
 		else
@@ -93,7 +94,7 @@
 		connect();
 		$query="insert into question(uid, title, content) values ($uid,'$title','$content')";
 		if(mysql_query($query))
-			return true;
+			return query_question_by_uid($uid, $title);
 		else
 			return false;
 	}
@@ -121,7 +122,29 @@
 		$query="select * from question where qid=$qid";
 		$result=mysql_query($query);
 		$question=mysql_fetch_assoc($result);
-		mysql_free_result($query);
+		mysql_free_result($result);
+		if($question)
+			return $question;
+		else
+			return false;
+	}
+	function query_question_by_tag($tag){
+		connect();
+		$query="select * from question where tags like '%$tag%'";
+		$result=mysql_query($query);
+		$question=mysql_fetch_assoc($result);
+		mysql_free_result($result);
+		if($question)
+			return $question;
+		else
+			return false;
+	}
+	function query_question_by_uid($uid, $title){
+		connect();
+		$query="select qid from question where uid=$uid and title='$title'";
+		$result=mysql_query($query);
+		$question=mysql_fetch_assoc($result);
+		mysql_free_result($result);
 		if($question)
 			return $question;
 		else

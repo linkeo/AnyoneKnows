@@ -9,7 +9,7 @@
 		$result=null;
 		if(isset($_POST['send'])){
 			require('../mysql.php');
-			$result=register_user($_POST['username'],$_POST['password'],$_POST['name'],$_POST['email'],$_POST['gender']);
+			$result=register_user($_POST['username'],$_POST['pass1'],$_POST['name'],$_POST['email'],$_POST['gender']);
 			if($result=='success')
 				header("Location: /login.php");
 		}
@@ -34,27 +34,27 @@
 		<form method="post" id="customForm" action="#">
 			<div>
 				<label for="username">用户名 Username</label>
-				<input id="username" name="username" type="text" />
+				<input id="username" name="username" type="text" class='textinput' />
 				<span id="usernameInfo">6-25个小写英文字母或数字</span>
 			</div>
 			<div>
 				<label for="pass1">密码 Password</label>
-				<input id="pass1" name="pass1" type="password" />
+				<input id="pass1" name="pass1" type="password" class='textinput' />
 				<span id="pass1Info">6-25个英文字母或数字或下划线(_)</span>
 			</div>
 			<div>
 				<label for="pass2">确认密码 Confirm Password</label>
-				<input id="pass2" name="pass2" type="password" />
+				<input id="pass2" name="pass2" type="password" class='textinput' />
 				<span id="pass2Info">再输入一次密码</span>
 			</div>
 			<div>
 				<label for="name">昵称 Nickname</label>
-				<input id="name" name="name" type="text" />
+				<input id="name" name="name" type="text" class='textinput' />
 				<span id="nameInfo">最多32个字符</span>
 			</div>
 			<div>
 				<label for="email">电子邮件 E-mail</label>
-				<input id="email" name="email" type="text" />
+				<input id="email" name="email" type="text" class='textinput' />
 				<span id="emailInfo">请输入可用的E-mail, 这要用作激活您的账号.</span>
 			</div>
 			<div>
@@ -64,11 +64,11 @@
 				<input id="gender2" name="gender" type="radio" value='2'><span class='sexlabel'>女</span></input>
 			</div>
 			<div>
-				<input id="send" class='button' name="send" type="submit" value="Send" />
+				<input id="send" class='button primary' name="send" type="submit" value="注册 Register" />
 			</div>
 		</form>
 	</div>
-	<script type="text/javascript" src="/jquery.js"></script>
 	<script type="text/javascript" src="validation.js"></script>
+	<?php common_footer(); ?>
 </body>
 </html>

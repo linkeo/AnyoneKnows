@@ -34,6 +34,23 @@ nav{
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
+#loggeduser{
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.5em 1em;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff;
+    font-size:11px;
+    color: #333;
+    white-space: nowrap;
+    outline: none;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
 #navibar{
 	float: none;
 	display: block;
@@ -58,8 +75,9 @@ nav *{
 	margin-right: 0px;
 }
 #search{
-	float: right;
-    position: relative;
+    float: right;
+}
+.textinput{
     overflow: visible;
     display: inline-block;
     padding: 0.62em 1em;
@@ -114,7 +132,7 @@ aside{
 	width: 320px;
 }
 .box{
-	border-radius: 1em;
+    border-radius: 1em;
     padding: 1em;
     background-color: #ececec;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
@@ -124,7 +142,7 @@ aside{
     background-image: linear-gradient(#f4f4f4, #ececec);
     -moz-background-clip: padding; /* for Firefox 3.6 */
     background-clip: padding-box;
-	box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 .item,.title{
     position: relative;
@@ -134,10 +152,15 @@ aside{
 .item:focus
 .item:active,
 .item.active{
-    transition:background-color 1s, box-shadow 1s, border-radius 1s;
-    background-color: rgba(255,255,255,0.5);
+    transition:all 1s;
+    background-color: rgba(255,255,255,0.8);
     box-shadow: 0 0 0.2em #777;
     border-radius: 0.5em;
+}
+.aitem{
+    padding-top: 1em;
+    margin-top: 1em;
+    border-top: 1px solid #ddd;
 }
 .title{ padding-bottom: 1em; }
 .listhead{
@@ -148,9 +171,11 @@ aside{
 .nav{
 	margin-top: 1em;
 }
-.lhcontent,.qcontent{
+.lhcontent,
+.qcontent,
+.acontent{
 	display: inline-block;
-	width: 78%;
+	width: 80%;
     border-right: 1px solid #ddd;
 }
 .lhcontent div{
@@ -158,52 +183,88 @@ aside{
 	font-size: 1em;
 	font-weight: normal;
 }
-.qcontent{
+.qcontent,
+.acontent{
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
-.qtitle{
+.qtitle,
+.atitle{
 	display: inline-block;
 	vertical-align: top;
-	width: 85%;
+	width: 90%;
 }
-.qtitle p{
+.ititle{
+    display: inline-block;
+    vertical-align: top;
+    width: 84%;
+}
+.qtitle p,
+.atitle p{
     margin: auto;
     font-size: 1.2em;
 }
-.quser{
+.quser,
+.auser,
+.iuser{
 	display: inline-block;
 	vertical-align: top;
 	margin-top: auto;
 	margin-bottom: auto;
 	width: 8%;
 }
-.qavator{
-	width: 2em;
-	height: 2em;
-	border-radius: 1em;
+.qavator,
+.aavator{
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
     margin: 0.2em;
     box-shadow: 0 0 0.2em #777;
 }
-.qstat{
+.avator{
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 0.75em;
+    margin: 0.2em;
+    box-shadow: 0 0 0.2em #777;
+}
+.qstat,
+.astat
+{
 	display: inline-block;
 	vertical-align: middle;
+    float: right;
 	width: 18%;
-	top: 0;
+    height: 100%;
 }
-.qstat div{
+.qstat div,
+.astat div{
 	display: inline-block;
 	width: 30%;
 	text-align: center;
 }
+.qstat > .answer{
+    margin-top: 1em;
+    width: 95%;
+}
 .upvotestat{
-	color: #72b330;
+    color: #72b330;
 }
 .downvotestat{
-	color: #599bdc;
+    color: #599bdc;
 }
 .starstat{
-	color: #b33630;
+    color: #b33630;
+}
+.improvestat{
+    color: #b33630;
+}
+.stat.button,
+.answer .button{
+    display: block;
+}
+.answer .button{
+    line-height: 4em;
 }
 .tag{
     position: relative;
@@ -236,6 +297,7 @@ aside{
 .tag:focus,
 .tag:active,
 .tag.active {
+    transition:all 1s, color 0, text-shadow 0;
     border-color: #82c340;
     border-bottom-color: #75b03a;
     text-decoration: none;
@@ -250,6 +312,7 @@ aside{
 
 .tag:active,
 .tag.active {
+    transition:all 1s;
     border-color: #abec69;
     border-bottom-color: #82c340;
     background-color: #8dde3c;
@@ -261,4 +324,50 @@ aside{
 }
 .pageid{
     width: 20px;
+}
+footer{
+    margin-top: 5em;
+    text-align: center;
+}
+
+.content{
+    display: block;
+    font-size: 0.5em !important;
+    padding: 1em;
+    background: white;
+    border: 1px solid #d4d4d4;
+    word-wrap: break-word;
+}
+.question.content{
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+}
+.improvement{
+    margin-top: -1px;
+}
+
+#newquestion{
+    display: block;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+#newtitlelabel{
+    display: inline-block;
+    margin-bottom: 1em;
+    width: 110px;
+    font-size: 1.5em;
+}
+#newtitle{
+    display: inline-block;
+    width: 800px;
+    float: right;
+    border-radius: 0.45em;
+}
+input.error{
+    background: #f8dbdb;
+    border-color: #e77776;
+}
+.error{
+    color: #c75756;
 }
