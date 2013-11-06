@@ -4,7 +4,8 @@ AnyoneKnows
 A website for questions and answers, with HTML5
 
 Some models is defined as bellow:
-	**JSON**
+
+``` JSON
 	User{
 		uid,		/* auto */
 		username,
@@ -15,3 +16,5 @@ Some models is defined as bellow:
 		website,
 		regtime		/* auto */
 	}
+
+```
