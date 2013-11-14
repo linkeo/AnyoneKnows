@@ -6,16 +6,22 @@
 		$question=query_question_by_qid($_GET['qid']);
 		$quser=query_user_by_uid($question['uid']);
 	}
+	$uid=0;
+	if(is_logged()){
+		$uid=$_COOKIE['uid'];
+	}
 ?>
 <html>
 <head>
 	<?php
 	common_head();
+	editor_require();
 	editor_display();
 	?>
 	<title>有谁知道
 		<?php if($question){echo ':'.$question['title'];} ?>
 	</title>
+	<script language='javascript' src='/question.js'></script>
 </head>
 <body>
 	<nav> <?php common_nav(); ?> </nav>
@@ -27,80 +33,152 @@
 			<?php } ?>
 		</div>
 		<div class='container'>
-		<div class='box'>
-				<div class='qcontent'>
-					<div class='quser'>
-						<img src="image/avator.jpg" class='qavator'>
-					</div>
-					<div class='qtitle'>
+		<div class='box' id='question' qid=<?php echo "'".$question['qid']."'"; ?>>
+			<div class='qcontent'>
+				<a class='quser' href=<?php echo "user.php?uid=".$question['uid']; ?>>
+					<img src=<?php echo "'".get_avator($quser)."'"; ?> class='qavator'>
+				</a>
+				<div class='qtitle'>
 
-						<?php if(!$question){ ?>
+					<?php if(!$question){ ?>
 
-						<p><span class='sitename'>有谁<b>知道</b>:</span>怎么使用jQuery来实现Ajax?</p>
-						<p class='question content'>RT</p>
-						<a class='tag' href='#'>jQuery</a>
-						<a class='tag' href='#'>Ajax</a>
+					<p><span class='sitename'>有谁<b>知道</b>:</span>怎么使用jQuery来实现Ajax?</p>
+					<p class='question content'>RT</p>
+					<p class='question content'>RT</p>
+					<a class='tag' href='#'>jQuery</a>
+					<a class='tag' href='#'>Ajax</a>
 
-						<?php }else{ ?>
+					<?php }else{ ?>
 
-						<p><span class='sitename'>有谁<b>知道</b>:</span><?php echo $question['title']; ?></p>
-						<div class='question content'><?php echo $question['content']; ?></div>
+					<p><span class='sitename'>有谁<b>知道</b>:</span><?php echo $question['title']; ?></p>
+					<div class='question author'><?php echo query_user_by_uid($question['uid'])['name']; ?></div>
+					<div class='question content'><?php echo $question['content']; ?></div>
 
-						<?php } ?><?php
-						$tags = json_decode($question['tags']);
-						if(is_array($tags))
-							foreach($tags as $value){ ?>
-							<a class='tag' href='#'><?php echo $value; ?></a>
-						<?php } ?>
+					<?php } ?><?php
+					$tags = json_decode($question['tags']);
+					if(is_array($tags))
+						foreach($tags as $value){ ?>
+						<a class='tag' href=<?php echo "'tag.php?tag=".$value."'"; ?>><?php echo $value; ?></a>
+					<?php } ?>
 
-					</div>
 				</div>
-				<div class='qstat'>
-					<div class='upvotestat'><p class='stat button primary'>赞<br>15</p></div>
-					<div class='downvotestat'><p class='stat button'>贬<br>15</p></div>
-					<div class='starstat'><p class='stat button danger'>收藏<br>15</p></div>
-					<div class='answer'><p id='answer'class='button'>回答</p></div>
-				</div>
+			</div>
+			<div class='qstat'>
+				<div><p class='stat button primary upvote question'><?php echo query_upvote_string_by_qid($uid,$question['qid']); ?></p></div>
+				<div><p class='stat button danger downvote question'><?php echo query_downvote_string_by_qid($uid,$question['qid']); ?></p></div>
+				<div><p class='stat button star question'><?php echo query_star_string_by_qid($uid,$question['qid']); ?></p></div>
+				<div><p id='answer' class='stat button primary'>回答<br>问题</p></div>
+				<?php if($question['uid']==$uid){ ?>
+				<div><p id='delete' class='stat button danger'>删除<br>问题</p></div>
+				<?php } ?>
+			</div>
+			<div class='clearfix'></div>
 		</div>
 		<br>
 		<div class='box'>
-			<h3>精选回答</h3>
-			<?php for($answeriter=0;$answeriter<5;$answeriter++){ ?>
-			<div class='aitem'>
+			<?php
+				$answers=query_answers_by_qid($question['qid']);
+				$count=count($answers);
+				$hasAccepted = false;
+				if($accepted=query_accepted_answer($question['qid'])){
+					$hasAccepted = true;
+				$count--;
+			?>
+			<h3>被采纳回答</h3>
+			<div class='aitem' aid=<?php echo "'".$accepted['aid']."'"; ?> >
 				<div class='acontent'>
-					<div class='auser'>
-						<img src="image/avator.jpg" class='qavator'>
-					</div>
+					<a class='auser' href=<?php echo "user.php?uid=".$accepted['uid']; ?>>
+						<img src=<?php echo "'".get_avator(query_user_by_uid($accepted['uid']))."'"; ?> class='qavator'>
+					</a>
 					<div class='atitle'>
-						<p class='content'>用$.post(url,data,success)<br>其中url为请求接收地址, data为POST数据,JSON格式, success为回调函数,可带一个参数为返回的数据</p>
-						<div class='improvement'>
-							<div class='iuser'>
-								<img src="image/avator.jpg" class='qavator'>
-							</div>
+						<div class='author'><?php echo query_user_by_uid($accepted['uid'])['name']; ?></div>
+						<div class='content'><?php echo $accepted['content']; ?></div>
+						
+						<?php $improvements=query_improvements_by_aid($accepted['aid']);
+								foreach ($improvements as $improvement) {
+						?>
+						<div class='improvement' iid=<?php echo "'".$improvement['iid']."'"; ?>>
+							<a class='iuser' href=<?php echo "user.php?uid=".$improvement['uid']; ?>>
+								<img src=<?php echo "'".get_avator(query_user_by_uid($improvement['uid']))."'"; ?> class='qavator'>
+							</a>
 							<div class='ititle'>
-								<p class='content'>也可以用$.get(url,success)或$.ajax, 不过$.ajax就比较复杂了, 要用的话还是自己Google吧.</p>
+								<div class='author'><?php echo query_user_by_uid($improvement['uid'])['name']; ?>
+									<?php if($improvement['uid']==$uid){ ?>
+									<p class='delete improv'>删除</p>
+									<?php } ?>
+								</div>
+								<div class='content'><?php echo $improvement['content']; ?></div>
 							</div>
 						</div>
-						<div class='improvement'>
-							<div class='iuser'>
-								<img src="image/avator.jpg" class='qavator'>
-							</div>
-							<div class='ititle'>
-								<p class='content'>谢谢~~~已用$.post解决</p>
-							</div>
-						</div>
+						<?php } ?>
 					</div>
 				</div>
 				<div class='astat'>
-					<div class='upvotestat'><p class='stat button primary'>赞<br>15</p></div>
-					<div class='downvotestat'><p class='stat button'>贬<br>15</p></div>
-					<div class='improvestat'><p class='stat button danger'>补充<br>15</p></div>
+					<div><p class='stat button primary upvote answer'><?php echo query_upvote_string_by_aid($uid,$accepted['aid']); ?></p></div>
+					<div><p class='stat button danger downvote answer'><?php echo query_downvote_string_by_aid($uid,$accepted['aid']); ?></p></div>
+					<div><p class='stat button improv'>补充<br><?php echo count($improvements); ?></p></div>
 				</div>
 			</div>
 			<?php } ?>
+			<?php if($count>0){ ?>
+			<h3>精选回答(<?php echo $count; ?>)</h3>
+			<?php } ?>
+			<?php foreach ($answers as $answer)
+					if($answer['aid']!=$accepted['aid']) {
+			?>
+			<div class='aitem' aid=<?php echo "'".$answer['aid']."'"; ?> >
+				<div class='acontent'>
+					<a class='auser' href=<?php echo "user.php?uid=".$answer['uid']; ?>>
+						<img src=<?php echo "'".get_avator(query_user_by_uid($answer['uid']))."'"; ?> class='qavator'>
+					</a>
+					<div class='atitle'>
+						<div class='author'><?php echo query_user_by_uid($answer['uid'])['name']; ?></div>
+						<div class='content'><?php echo $answer['content']; ?></div>
+						
+						<?php $improvements=query_improvements_by_aid($answer['aid']);
+								foreach ($improvements as $improvement) {
+						?>
+						<div class='improvement' iid=<?php echo "'".$improvement['iid']."'"; ?>>
+							<a class='iuser' href=<?php echo "user.php?uid=".$improvement['uid']; ?>>
+								<img src=<?php echo "'".get_avator(query_user_by_uid($improvement['uid']))."'"; ?> class='qavator'>
+							</a>
+							<div class='ititle'>
+								<div class='author'><?php echo query_user_by_uid($improvement['uid'])['name']; ?>
+									<?php if($improvement['uid']==$uid){ ?>
+									<p class='delete improv'>删除</p>
+									<?php } ?>
+								</div>
+								<div class='content'><?php echo $improvement['content']; ?></div>
+							</div>
+						</div>
+						<?php } ?>
+					</div>
+				</div>
+				<div class='astat'>
+					<div><p class='stat button primary upvote answer'><?php echo query_upvote_string_by_aid($uid,$answer['aid']); ?></p></div>
+					<div><p class='stat button danger downvote answer'><?php echo query_downvote_string_by_aid($uid,$answer['aid']); ?></p></div>
+					<div><p class='stat button improv'>补充<br><?php echo count($improvements); ?></p></div>
+					<?php if(($question['uid']==$uid)&&!$hasAccepted){ ?>
+					<div><p class='stat button primary accept answer'>采纳<br>回答</p></div>
+					<?php } if($answer['uid']==$uid){ ?>
+					<div><p class='stat button danger delete answer'>删除<br>回答</p></div>
+					<?php } ?>
+				</div>
+			</div>
+			<div class='clearfix'></div>
+			<?php } ?>
 		</div>
+		<br>
+		<div class='box' id='reply'>
+			<div class='button danger pill' id='edit-close'>关闭编辑栏</div>
+			<div id="replylabel"></div>
+			<form id="replyform" action="">
+				<input type='hidden' id='replyid' name='id' value='none'>
+				<script type='text/plain' name="newcontent" id="myEditor" ></script>
+				<br>
+				<input id='newsubmit' type='submit' name='send' value='提交 Submit' class='button primary'>
+			</form>
 		</div>
-		<div class='container' id='reply'>
 		</div>
 	</div>
 	<?php common_footer(); ?>

@@ -28,9 +28,22 @@
 				else
 					echo $_POST['newtitle'];
 			?></div>
+			<?php
+				preg_match_all('/\w+/', $_POST['newtags'], $match);
+				foreach ($match[0] as $value) {
+					?>
+					<span class='tag big'><?php echo $value; ?></span>
+					<?php
+				}
+			?>
 			<form action='post.php' method='post'>
 				<input type='hidden' name='title' value=
 				<?php echo '"'.$_POST['newtitle'].'"'; ?>
+				>
+				<input type='hidden' name='tags' value=
+				<?php
+					echo json_encode($match[0]);
+				?>
 				>
 				<input type='hidden' name='content' value=
 				<?php

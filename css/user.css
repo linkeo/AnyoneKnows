@@ -1,0 +1,173 @@
+
+.avator.big{
+	float: left;
+    width: 3em;
+    height: 3em;
+    border-radius: 1.5em;
+    margin: 0.5em;
+    box-shadow: 0 0 0.5em #777;
+}
+.avator.edit{
+    float: none;
+}
+.avator.edit:hover,
+.avator.edit:focus{
+    box-shadow: 0 0 1.5em #777;
+}
+.avator.edit:active,
+.avator.edit.active{
+    box-shadow: 0 0 1.5em #09F;
+}
+
+.username{
+	display: inline-block;
+	font-size: 2em;
+	line-height: 1.5em;
+	margin: 0.25em 0;
+}
+.property{
+	margin: 0 1em;
+}
+.property *{
+    vertical-align: middle;
+}
+
+.property input[type='text'],
+.property input[type='password']{
+    width: 20em;
+}
+.property .hint{
+    padding: 0 0.5em;
+}
+
+.attr{
+    display: inline-block;
+    width: 10em;
+}
+.attr-value{
+    display: inline-block;
+}
+
+.left{
+	float: left;
+	width: 74%;
+    border-right: 1px solid #ddd;
+}
+.right{
+	float: right;
+	width: 25%;
+}
+#edit{
+	font-size: 1em;
+	float: right;
+	margin: 0.75em;
+}
+#list-option{
+	margin: 0.5em;
+}
+#list-option .button{
+	font-size: 1em;
+}
+.card-left{
+	float: left;
+	width: 24%;
+}
+
+.card-right{
+	float: right;
+	width: 75%;
+    border-left: 1px solid #ddd;
+}
+.card-right > div {margin-left: 1em;}
+.card .username{ font-size: 1em; }
+.card .bonus{
+	line-height: 1.5em;
+	margin: 0.25em 0;
+}
+.gray{ color:gray; }
+
+.bonus_item{
+	margin: 0.5em 0.5em; 
+}
+.bonus_uqd,
+.bonus_uad,
+.bonus_acd,
+.bonus_sd{ color: #72b330; }
+.bonus_dqd,
+
+.bonus_dad{ color: #b33630; }
+.bonus_q,
+.bonus_a,
+.bonus_i,
+.bonus_uq,
+
+.bonus_ua,
+.bonus_dq,
+.bonus_da,
+.bonus_ac{ color: #599bdc; }
+
+.bonus_value{
+	display: inline-block;
+	width: 3em;
+	padding: 0 0 0 3em;
+}
+
+.gender-male,
+.gender-female{
+    overflow: visible;
+    padding: 0 0.5em;
+    margin: 0.2em 0;
+    border: 1px solid;
+    text-align: center;
+    white-space: nowrap;
+    cursor: default;
+    outline: none;
+    font-size: 0.5em;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    border-radius: 0.5em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+.gender-male{
+    border-color: #3399ff;
+    border-bottom-color: #2288ff;
+    background-color: #66ccff;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#66ccff), to(#3399ff));
+    background-image: -moz-linear-gradient(#66ccff, #3399ff);
+    background-image: -o-linear-gradient(#66ccff, #3399ff);
+    background-image: linear-gradient(#66ccff, #3399ff);
+}
+.gender-female{
+    border-color: #ff44aa;
+    border-bottom-color: #ff2288;
+    background-color: #ff88ee;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff88ee), to(#ff44aa));
+    background-image: -moz-linear-gradient(#ff88ee, #ff44aa);
+    background-image: -o-linear-gradient(#ff88ee, #ff44aa);
+    background-image: linear-gradient(#ff88ee, #ff44aa);
+}
+
+.fixed.box{
+    position: fixed;
+    width: 52em;
+    height: 20em;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    z-index: 9999;
+}
+.hidden{ display: none; }
+.fixed.box div{
+    width: 52em;
+}
+.fixed.box img{
+    float: left;
+}

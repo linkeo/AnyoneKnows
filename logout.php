@@ -6,7 +6,9 @@ if(isset($_COOKIE['login'])){
 	setcookie('login','false',$savetime);
 	setcookie('uid','NaN',$savetime);
 }
-	$url=$_POST['url'];
+$url='login.php';
+if(isset($_GET['url']))
+	$url=$_GET['url'];
 header("Location: $url");
 
 ?>
