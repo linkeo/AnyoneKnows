@@ -1,6 +1,5 @@
 <?php
 	require('mysql.php');
-	header('Content-Type: text/html; charset=UTF-8');
 	function common_head(){
 		?>
 		<meta charset="utf-8">
