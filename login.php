@@ -10,20 +10,28 @@
 			}else if($result=='password'){
 				return $result;
 			}else{
-				$savetime=time()+60*5;
+				$savetime=time()+60*60*24;
 				setcookie("uid",$result['uid'],$savetime);
 				setcookie("login",true,$savetime);
 				return true;
 			}
 		}
+
+		$url='index.php';
+		if(isset($_GET['url']))
+			$url=$_GET['url'];
+		if(isset($_POST['url']))
+			$url=$_POST['url'];
+
 		$login  = false;
 		if(isset($_POST["username"])){
 			$login = login($loginuser,$_POST['username'],$_POST['password']);
 			if($login==true)
-				header("Location: index.php");
+				header("Location: $url");
 		}
 		common_head();
 	?>
+	<title>登录 Login - AnyoneKnows</title>
 	<style type="text/css">
 		#loginform label{
 			display: block;
@@ -76,6 +84,7 @@
 					<input type='text' placeholder='username' name='username' class='textinput'>
 					<label for='password'>密码 Password</label>
 					<input type='password' placeholder='password' name='password' class='textinput'>
+					<input type='hidden' name='url' value=<?php echo "'".$url."'"; ?>>
 					<input type='submit' value='登录 Login' class='button primary'></form>
 			<?php } ?>
 		</div>

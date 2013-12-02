@@ -7,42 +7,54 @@
 		<script language="javascript" src="\jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/gh-buttons.css" >
 		<link rel="stylesheet" type="text/css" href="css/homepage.css" >
+		<script type="text/javascript" src="./ueditor/ueditor.parse.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('#currenturl').val(window.location.href);
+				$('#logoutbutton').attr('href',$('#logoutbutton').attr('href')+"?url="+window.location.href);
+				$('#loginbutton').attr('href',$('#loginbutton').attr('href')+"?url="+window.location.href);
+				$('.sitename').click(function(event) {
+					location = '/';
+				});
 			});
+	    	function doUParse(){
+	       		uParse('.content',{
+		            'highlightJsUrl':'./ueditor/third-party/SyntaxHighlighter/shCore.js',
+		            'highlightCssUrl':'./ueditor/third-party/SyntaxHighlighter/shCoreDefault.css'
+		        });
+		    }
 		</script>
 		<?php
 	}
 	function common_nav(){
+		$user = 0;
+		if(is_logged())
+			$user = query_user_by_uid($_COOKIE['uid']);
 		?>
 		<div id="navibar" class='container clearfix'>
-			<?php if(is_logged()){
-			 $user = query_user_by_uid($_COOKIE['uid']); ?>
-			<div id='usernav'>
+			
+			<div id='usernav' uid= <?php echo "'".$user['uid']."'"; ?> >
+				<?php if(is_logged()){ ?>
 				<div id='userinfo'>
-					<div id='avator'><img class="avator" src="image/avator.jpg"></div>
+					<a id='avator' href=<?php echo "user.php?uid=".$user['uid']; ?>><img class="avator" src=<?php echo "'".get_avator($user)."'"; ?>></a>
 					<div id="loggeduser" class="username"><?php echo $user['name']; ?></div>
-					<form action='logout.php' method='post'>
-						<input name='url' id='currenturl' type='hidden'>
-						<input class='button danger' name='logout' type='submit' value='注销'>
+					<a class='button danger' id='logoutbutton' href='logout.php'>注销</a>
 					</form>
 				</div>
+				<?php }else{ ?>
+				<div class='button-group'>
+					<a class='button primary' id='loginbutton' href='login.php'>登陆</a>
+					<a class='button' href='register.php'>注册</a>
+				</div>
+				<?php } ?>
 			</div>
-			<?php }else{ ?>
-			<div class='button-group'>
-				<a class='button primary' href='login.php'>登陆</a>
-				<a class='button' href='register'>注册</a>
-			</div>
-			<?php } ?>
 			<div id='navigroup' class='button-group'>
 				<a class='button' href='search.php'>问题</a>
 				<a class='button' href='tags.php'>标签</a>
 				<a class='button' href='users.php'>用户</a>
 				<a class='button primary' href='new.php'>提问</a>
 			</div>
-			<form id="search" action='search.php'>
-				<input type="text" class='textinput' placeholder="搜索"/>
+			<form id="search" action='search.php' method='get'>
+				<input type="text" class='textinput' placeholder="搜索" name='keyword'/>
 			</form>
 		</div>
 		<?php
@@ -62,17 +74,12 @@
 		</script>
 		<script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
 		<script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
-		<script type="text/javascript" src="./ueditor/ueditor.parse.js"></script>
 		<?php
 	}
 	function editor_display(){
 		?>
-		<script type="text/javascript" src="./ueditor/ueditor.parse.js"></script>
 	    <script type="text/javascript">
-	        uParse('.content',{
-	            'highlightJsUrl':'./ueditor/third-party/SyntaxHighlighter/shCore.js',
-	            'highlightCssUrl':'./ueditor/third-party/SyntaxHighlighter/shCoreDefault.css'
-	        });
+		    doUParse();
 	    </script>
 		<?php
 	}
@@ -102,5 +109,31 @@
 		$result;
 		preg_match_all("/\[[^\]]+\]/", $value, $result);
 		return $result;
+	}
+	function get_avator($user){
+		$index = $user['avator'];
+		if($index>0&&$index<=64){
+			return "image/avator/$index.jpg";
+		}else{
+			$gender = $user['gender'];
+			if($gender==1)
+				return "image/avator/0m.jpg";
+			else if($gender==2)
+				return "image/avator/0f.jpg";
+			else
+				return "image/avator/0.jpg";
+		}
+	}
+	function get_avator_by_index($index, $gender){
+		if($index>0&&$index<=64){
+			return "image/avator/$index.jpg";
+		}else{
+			if($gender==1)
+				return "image/avator/0m.jpg";
+			else if($gender==2)
+				return "image/avator/0f.jpg";
+			else
+				return "image/avator/0.jpg";
+		}
 	}
 ?>

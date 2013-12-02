@@ -8,7 +8,7 @@
 			header('Location: logout.php');
 	}else{
 		if(isset($_POST['send']))
-		$result = insert_question($_COOKIE['uid'], $_POST['title'], $_POST['content']);
+		$result = insert_question($_COOKIE['uid'], $_POST['title'], $_POST['content'], $_POST['tags']);
 		if($result!=false)
 			header("Location: question.php?qid=".$result['qid']);
 	}

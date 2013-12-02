@@ -27,65 +27,71 @@
 							</div>
 							<div class='qtitle'>标题</div>
 						</div>
-						<div class='qstat'>
+						<div class='preview qstat'>
 							<div class='upvotestat'>赞</div>
 							<div class='downvotestat'>贬</div>
 							<div class='starstat'>收藏</div>
 						</div>
 					</div>
 						<!-- question display block -->
-					<?php for($qiter=0;$qiter<10;$qiter++){?>
+					<?php $questions = query_questions_by_keyword("");
+						foreach ($questions as $question) {
+					?>
 					<div class='item'>
 						<div class='qcontent'>
-							<div class='quser'>
-								<img src="image/avator.jpg" class='qavator'>
-							</div>
-							<div class='qtitle'><p>怎么使用jQuery来实现Ajax?</p>
-								<a class='tag' href='#'>jQuery</a>
-								<a class='tag' href='#'>Ajax</a>
+							<a class='quser' href=<?php echo "user.php?uid=".$question['uid']; ?> >
+								<img src=<?php echo "'".get_avator(query_user_by_uid($question['uid']))."'"; ?> class='qavator'>
+							</a>
+							<div class='qtitle'><p><a href=<?php echo "'question.php?qid=".$question['qid']."'"; ?>><?php echo $question['title']; ?></a></p>
+								<?php
+								$tags = json_decode($question['tags']);
+								if(is_array($tags))
+									foreach($tags as $value){ ?>
+									<a class='tag' href=<?php echo "'tag.php?tag=".$value."'"; ?>><?php echo $value; ?></a>
+								<?php } ?>
 							</div>
 						</div>
-						<div class='qstat'>
-							<div class='upvotestat'>15</div>
-							<div class='downvotestat'>15</div>
-							<div class='starstat'>15</div>
+						<div class='preview qstat'>
+							<div class='upvotestat'><?php echo query_upvote_by_qid($question['qid']); ?></div>
+							<div class='downvotestat'><?php echo query_downvote_by_qid($question['qid']); ?></div>
+							<div class='starstat'><?php echo query_star_by_qid($question['qid']); ?></div>
 						</div>
 					</div>
 					<?php }?>
 						<!-- question display block -->
 
-					<div id='qnav'class='nav button-group'>
-						<a id='prev_page'class='button pill icon arrowleft disable' href='#'>上一页</a>
+					<!-- <div id='qnav'class='nav button-group'> -->
+						<!-- <a id='prev_page'class='button pill icon arrowleft disable' href='#'>上一页</a> -->
 						<!-- Page display block -->
-						<!-- current page --><a  class='pageid button pill primary' href='#'>1</a>
-						<a class='pageid button pill' href='#'>2</a>
-						<a class='pageid button pill' href='#'>3</a>
-						<a class='pageid button pill' href='#'>4</a>
-						<a class='pageid button pill' href='#'>5</a>
-						<a class='pageid button pill' href='#'>6</a>
-						<a class='pageid button pill' href='#'>7</a>
-						<a class='pageid button pill' href='#'>8</a>
-						<a class='pageid button pill' href='#'>9</a>
-						<a class='pageid button pill' href='#'>10</a>
+						<!-- current page<a  class='pageid button pill primary' href='#'>1</a> -->
+						<!-- <a class='pageid button pill' href='#'>2</a> -->
+						<!-- <a class='pageid button pill' href='#'>3</a> -->
+						<!-- <a class='pageid button pill' href='#'>4</a> -->
+						<!-- <a class='pageid button pill' href='#'>5</a> -->
+						<!-- <a class='pageid button pill' href='#'>6</a> -->
+						<!-- <a class='pageid button pill' href='#'>7</a> -->
+						<!-- <a class='pageid button pill' href='#'>8</a> -->
+						<!-- <a class='pageid button pill' href='#'>9</a> -->
+						<!-- <a class='pageid button pill' href='#'>10</a> -->
 						<!-- Page display block -->
-						<a id='next_page' class='button pill icon arrowright' href='#'>下一页</a>
-					</div>
+						<!-- <a id='next_page' class='button pill icon arrowright' href='#'>下一页</a> -->
+					<!-- </div> -->
 				</div>
 			</div>
 			<aside>
 				<div class='box'>
 						<!-- hot tag display block -->
 					<h3 class='title'>热门标签</h3>
-					<a class='tag' href='#'>Java</a>
-					<a class='tag' href='#'>JavaScript</a>
-					<a class='tag' href='#'>PHP</a>
-					<a class='tag' href='#'>Ajax</a>
-					<a class='tag' href='#'>jQuery</a>
-					<a class='tag' href='#'>JSON</a>
-					<a class='tag' href='#'>正则表达式</a>
-					<a class='tag' href='#'>C#</a>
-					<a class='tag' href='#'>C++</a>
-					<a class='tag' href='#'>Swing</a>
+
+					<?php
+					$tags = query_tags();
+					foreach ($tags as $tag) {
+						?>
+						<a class='tag' href=<?php echo "'tag.php?tag=".$tag."'"; ?>
+						><?php echo $tag; ?></a>
+						<?php
+					}
+					?>
 						<!-- hot tag display block -->
 				</div>
 			</aside>

@@ -1,3 +1,19 @@
+
+		$bonus	= 2*$upA
+				+ 2*$upQ
+				- 1*$downA
+				- 1*$downQ
+				+ 5*$countQ
+				+ 2*$countA
+				+ 1*$countI
+				+ 5*$updQ
+				+ 5*$updA
+				- 2*$downdQ
+				- 2*$downdA
+				+ 5*$stardQ
+				+ 10*$accepted
+				+ 5*$accept;
+
 user
 	uid     	int 11 ai
 	username	varchar 25
@@ -33,7 +49,3 @@ star/upvote_question/downvote_question
 upvote_answer/downvote_answer
 	uid     	int 11
 	aid     	int 11
-visit
-	vid     	int 22
-	qid     	int 11
-	time    	datetime
