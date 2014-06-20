@@ -42,7 +42,7 @@
 					<a class='quser' href=<?php echo "user.php?uid=".$question['uid']; ?>>
 						<img src=<?php echo "'".get_avator(query_user_by_uid($question['uid']))."'"; ?> class='qavator'>
 					</a>
-					<div class='qtitle'><p><a href=<?php echo "'question.php?qid=".$question['qid']."'"; ?>><?php echo $question['title']; ?></a></p>
+					<div class='qtitle'><p><a href=<?php echo "'question.php?qid=".$question['qid']."'"; ?>><span class='sitename'>有谁<b>知道</b>:</span><?php echo $question['title']; ?></a></p>
 						<?php
 						$tags = json_decode($question['tags']);
 						if(is_array($tags))
